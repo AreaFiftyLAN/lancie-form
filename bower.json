@@ -1,5 +1,6 @@
 {
   "name": "lancie-form",
+  "version": "1.0.0",
   "description": "iron-form element specified for the lancie frontends",
   "main": "lancie-form.html",
   "dependencies": {
