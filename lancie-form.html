@@ -19,7 +19,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       display: block;
     }
     </style>
-    <form is="iron-form"
+    <iron-form is="iron-form"
       id="form"
       method="[[method]]"
       content-type="[[contentType]]"
@@ -29,8 +29,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       on-iron-form-error="handleResponse"
       on-keydown="submitOnEnter">
 
-      <slot></slot>
-    </form>
+      <form>
+        <slot></slot>
+      </form>
+    </iron-form>
   </template>
   <script>
   'use strict';
