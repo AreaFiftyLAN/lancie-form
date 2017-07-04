@@ -13,23 +13,24 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../iron-form/iron-form.html">
 
 <dom-module id="lancie-form">
-  <style>
+  <template>
+    <style>
     :host {
       display: block;
     }
-  </style>
-  <template>
-    <form is="iron-form"
-      id="form"
-      method="[[method]]"
-      content-type="[[contentType]]"
-      headers="[[_getHeaders(token)]]"
-      action="/api/v1/[[refurl]]"
-      on-iron-form-response="handleResponse"
-      on-iron-form-error="handleResponse"
-      on-keydown="submitOnEnter">
-      <content></content>
-    </form>
+    </style>
+    <iron-form is="iron-form" id="form">
+      <form
+        method="[[method]]"
+        content-type="[[contentType]]"
+        headers="[[_getHeaders(token)]]"
+        action="/api/v1/[[refurl]]"
+        on-iron-form-response="handleResponse"
+        on-iron-form-error="handleResponse"
+        on-keydown="submitOnEnter">
+          <slot></slot>
+      </form>
+    </iron-form>
   </template>
   <script>
   'use strict';
