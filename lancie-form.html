@@ -19,14 +19,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       display: block;
     }
     </style>
-    <iron-form is="iron-form" id="form">
+    <iron-form is="iron-form" id="form"
+      on-iron-form-response="handleResponse"
+      on-iron-form-error="handleResponse">
+      
       <form
         method="[[method]]"
-        content-type="[[contentType]]"
+        enctype="[[contentType]]"
         headers="[[_getHeaders(token)]]"
         action="/api/v1/[[refurl]]"
-        on-iron-form-response="handleResponse"
-        on-iron-form-error="handleResponse"
         on-keydown="submitOnEnter">
           <slot></slot>
       </form>
