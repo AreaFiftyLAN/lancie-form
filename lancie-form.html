@@ -20,13 +20,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     }
     </style>
     <iron-form is="iron-form" id="form"
+      headers="[[_getHeaders(token)]]"
       on-iron-form-response="handleResponse"
       on-iron-form-error="handleResponse">
       
       <form
         method="[[method]]"
-        enctype="[[contentType]]"
-        headers="[[_getHeaders(token)]]"
         action="/api/v1/[[refurl]]"
         on-keydown="submitOnEnter">
           <slot></slot>
@@ -61,6 +60,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       /* STATIC CALL */
       injectToken: function(newToken) {
+        console.log('injecting token', newToken);
         token = newToken;
         this.token = token;
 
@@ -116,6 +116,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       _getHeaders: function(token) {
         return {
           'X-Auth-Token': token,
+          'Content-Type': this.contentType,
         };
       },
 
