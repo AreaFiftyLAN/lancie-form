@@ -20,7 +20,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     }
     </style>
     <iron-form is="iron-form" id="form"
-      headers="[[_getHeaders(token)]]"
+      headers="[[_getHeaders(token, contentType)]]"
       on-iron-form-response="handleResponse"
       on-iron-form-error="handleResponse">
       
@@ -55,7 +55,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           value: false,
         },
         refurl: String,
-        token: String,
+        token: {
+          type: String,
+          value: '',
+          notify: true,
+        }
       },
 
       /* STATIC CALL */
@@ -113,10 +117,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         this.fire('enter');
       },
 
-      _getHeaders: function(token) {
+      _getHeaders: function(token, contentType) {
         return {
           'X-Auth-Token': token,
-          'Content-Type': this.contentType,
+          'Content-Type': contentType,
         };
       },
 
